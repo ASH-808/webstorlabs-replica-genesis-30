@@ -1,12 +1,22 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Hero = () => {
+  const backgroundParallax = useParallax({ sensitivity: 0.02, maxOffset: 15 });
+  const imageParallax1 = useParallax({ sensitivity: 0.04, maxOffset: 25 });
+  const imageParallax2 = useParallax({ sensitivity: 0.03, maxOffset: 20 });
+  const imageParallax3 = useParallax({ sensitivity: 0.05, maxOffset: 30 });
+  const imageParallax4 = useParallax({ sensitivity: 0.035, maxOffset: 22 });
+
   return (
     <section id="home" className="min-h-screen bg-white pt-16 relative overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute top-20 left-8 w-64 h-48 opacity-60">
+      {/* Background Images with Parallax */}
+      <div 
+        className="absolute top-20 left-8 w-64 h-48 opacity-60 will-change-transform"
+        style={{ transform: imageParallax1.transform }}
+      >
         <img 
           src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&h=400&fit=crop" 
           alt="Workspace"
@@ -14,35 +24,53 @@ export const Hero = () => {
         />
       </div>
       
-      <div className="absolute top-16 right-8 w-48 h-32 opacity-60">
+      <div 
+        className="absolute top-16 right-8 w-48 h-32 opacity-60 will-change-transform"
+        style={{ 
+          transform: imageParallax2.transform,
+          animationDelay: "0.2s" 
+        }}
+      >
         <img 
           src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=400&h=300&fit=crop" 
           alt="Technology"
           className="w-full h-full object-cover rounded-lg shadow-lg animate-fade-in"
-          style={{ animationDelay: "0.2s" }}
         />
       </div>
 
-      <div className="absolute bottom-32 left-16 w-56 h-40 opacity-60">
+      <div 
+        className="absolute bottom-32 left-16 w-56 h-40 opacity-60 will-change-transform"
+        style={{ 
+          transform: imageParallax3.transform,
+          animationDelay: "0.4s" 
+        }}
+      >
         <img 
           src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=350&fit=crop" 
           alt="Circuit board"
           className="w-full h-full object-cover rounded-lg shadow-lg animate-fade-in"
-          style={{ animationDelay: "0.4s" }}
         />
       </div>
 
-      <div className="absolute bottom-20 right-16 w-52 h-36 opacity-60">
+      <div 
+        className="absolute bottom-20 right-16 w-52 h-36 opacity-60 will-change-transform"
+        style={{ 
+          transform: imageParallax4.transform,
+          animationDelay: "0.6s" 
+        }}
+      >
         <img 
           src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=450&h=300&fit=crop" 
           alt="Digital display"
           className="w-full h-full object-cover rounded-lg shadow-lg animate-fade-in"
-          style={{ animationDelay: "0.6s" }}
         />
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      {/* Main Content with subtle parallax */}
+      <div 
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 will-change-transform"
+        style={{ transform: backgroundParallax.transform }}
+      >
         <div className="text-center">
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none mb-8 animate-fade-in">
             WEBSTORLABS

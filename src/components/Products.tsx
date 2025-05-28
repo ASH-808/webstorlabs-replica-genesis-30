@@ -1,26 +1,34 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard, Smartphone, Wifi } from "lucide-react";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Products = () => {
+  const cardParallax1 = useParallax({ sensitivity: 0.03, maxOffset: 18 });
+  const cardParallax2 = useParallax({ sensitivity: 0.025, maxOffset: 15 });
+  const cardParallax3 = useParallax({ sensitivity: 0.035, maxOffset: 20 });
+
   const products = [
     {
       icon: <CreditCard className="h-8 w-8 text-blue-600" />,
       title: "NFC Cards",
       description: "Premium NFC-enabled access cards with customizable designs and advanced security features.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+      parallax: cardParallax1
     },
     {
       icon: <Smartphone className="h-8 w-8 text-blue-600" />,
       title: "Smart Readers",
       description: "High-performance NFC readers with real-time data processing and cloud connectivity.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+      parallax: cardParallax2
     },
     {
       icon: <Wifi className="h-8 w-8 text-blue-600" />,
       title: "Smart Tags",
       description: "Versatile NFC tags for asset tracking, automation, and seamless user interactions.",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop",
+      parallax: cardParallax3
     }
   ];
 
@@ -38,7 +46,8 @@ export const Products = () => {
           {products.map((product, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white border-0 overflow-hidden"
+              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white border-0 overflow-hidden will-change-transform"
+              style={{ transform: product.parallax.transform }}
             >
               <div className="h-48 overflow-hidden">
                 <img 
