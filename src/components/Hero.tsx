@@ -2,6 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const Hero = () => {
   const backgroundParallax = useParallax({ sensitivity: 0.02, maxOffset: 15 });
@@ -66,23 +68,37 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Main Content with subtle parallax */}
+      {/* Main Content with animations */}
       <div 
         className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 will-change-transform"
         style={{ transform: backgroundParallax.transform }}
       >
         <div className="text-center">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none mb-8 animate-fade-in">
-            WEBSTORLABS
-          </h1>
+          <AnimatedText 
+            animation="text-reveal" 
+            delay={200}
+            className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none mb-8"
+          >
+            <h1 className="animate-glow-pulse">WEBSTORLABS</h1>
+          </AnimatedText>
           
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              "From smart entry systems to custom software, WebstorLabs delivers the complete infrastructure for intelligent access control."
-            </p>
+            <AnimatedText 
+              animation="fade-up" 
+              delay={600}
+              className="text-lg md:text-xl text-gray-700 leading-relaxed"
+            >
+              <p>
+                "From smart entry systems to custom software, WebstorLabs delivers the complete infrastructure for intelligent access control."
+              </p>
+            </AnimatedText>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
+          <StaggeredText 
+            staggerDelay={200}
+            animation="scale-fade"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105">
               Know More
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -91,16 +107,18 @@ export const Hero = () => {
               <Play className="mr-2 h-5 w-5" />
               Watch Demo
             </Button>
-          </div>
+          </StaggeredText>
         </div>
       </div>
 
-      {/* Floating social icon */}
-      <div className="fixed bottom-8 right-8 z-20">
-        <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300">
-          <span className="text-white font-bold">f</span>
+      {/* Floating social icon with animation */}
+      <AnimatedText animation="scale-fade" delay={1000}>
+        <div className="fixed bottom-8 right-8 z-20">
+          <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300">
+            <span className="text-white font-bold">f</span>
+          </div>
         </div>
-      </div>
+      </AnimatedText>
     </section>
   );
 };

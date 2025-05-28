@@ -1,6 +1,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const HowItWorks = () => {
   const steps = [
@@ -30,13 +32,21 @@ export const HowItWorks = () => {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">How It Works</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Simple implementation process from setup to deployment
-          </p>
+          <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
+            <h2>How It Works</h2>
+          </AnimatedText>
+          <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p>
+              Simple implementation process from setup to deployment
+            </p>
+          </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <StaggeredText
+          staggerDelay={200}
+          animation="slide-up"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {steps.map((step, index) => (
             <div key={index} className="relative">
               <Card className="border-0 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 h-full">
@@ -54,7 +64,7 @@ export const HowItWorks = () => {
               )}
             </div>
           ))}
-        </div>
+        </StaggeredText>
       </div>
     </section>
   );

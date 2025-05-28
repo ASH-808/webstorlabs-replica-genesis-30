@@ -2,6 +2,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard, Smartphone, Wifi } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const Products = () => {
   const cardParallax1 = useParallax({ sensitivity: 0.03, maxOffset: 18 });
@@ -36,13 +38,21 @@ export const Products = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Products</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Complete NFC ecosystem solutions designed for modern access control and smart automation
-          </p>
+          <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
+            <h2>Our Products</h2>
+          </AnimatedText>
+          <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p>
+              Complete NFC ecosystem solutions designed for modern access control and smart automation
+            </p>
+          </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggeredText
+          staggerDelay={200}
+          animation="fade-up"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {products.map((product, index) => (
             <Card 
               key={index} 
@@ -69,7 +79,7 @@ export const Products = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </StaggeredText>
       </div>
     </section>
   );

@@ -2,6 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const Pricing = () => {
   const plans = [
@@ -53,13 +55,21 @@ export const Pricing = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Pricing Plans</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose the perfect plan for your access control needs
-          </p>
+          <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
+            <h2>Pricing Plans</h2>
+          </AnimatedText>
+          <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p>
+              Choose the perfect plan for your access control needs
+            </p>
+          </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggeredText
+          staggerDelay={200}
+          animation="scale-fade"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {plans.map((plan, index) => (
             <Card 
               key={index} 
@@ -108,7 +118,7 @@ export const Pricing = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </StaggeredText>
       </div>
     </section>
   );

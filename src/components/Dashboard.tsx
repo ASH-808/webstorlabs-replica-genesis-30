@@ -2,61 +2,77 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BarChart3, Users, Shield, Activity } from "lucide-react";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const Dashboard = () => {
+  const features = [
+    {
+      icon: <BarChart3 className="h-8 w-8 text-blue-600 mb-2" />,
+      title: "Analytics",
+      description: "Real-time usage stats",
+      bgColor: "bg-blue-50"
+    },
+    {
+      icon: <Users className="h-8 w-8 text-green-600 mb-2" />,
+      title: "User Management",
+      description: "Access control",
+      bgColor: "bg-green-50"
+    },
+    {
+      icon: <Shield className="h-8 w-8 text-purple-600 mb-2" />,
+      title: "Security",
+      description: "Advanced protection",
+      bgColor: "bg-purple-50"
+    },
+    {
+      icon: <Activity className="h-8 w-8 text-orange-600 mb-2" />,
+      title: "Monitoring",
+      description: "24/7 surveillance",
+      bgColor: "bg-orange-50"
+    }
+  ];
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
-              Intelligent Dashboard
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Monitor, manage, and analyze your access control system with our intuitive admin panel. 
-              Real-time insights and comprehensive reporting at your fingertips.
-            </p>
+            <AnimatedText animation="fade-right" className="text-4xl md:text-5xl font-bold text-black mb-8">
+              <h2>Intelligent Dashboard</h2>
+            </AnimatedText>
             
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <Card className="p-4 border-0 bg-blue-50">
-                <CardContent className="p-0">
-                  <BarChart3 className="h-8 w-8 text-blue-600 mb-2" />
-                  <h3 className="font-semibold text-gray-900">Analytics</h3>
-                  <p className="text-sm text-gray-600">Real-time usage stats</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-green-50">
-                <CardContent className="p-0">
-                  <Users className="h-8 w-8 text-green-600 mb-2" />
-                  <h3 className="font-semibold text-gray-900">User Management</h3>
-                  <p className="text-sm text-gray-600">Access control</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-purple-50">
-                <CardContent className="p-0">
-                  <Shield className="h-8 w-8 text-purple-600 mb-2" />
-                  <h3 className="font-semibold text-gray-900">Security</h3>
-                  <p className="text-sm text-gray-600">Advanced protection</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-orange-50">
-                <CardContent className="p-0">
-                  <Activity className="h-8 w-8 text-orange-600 mb-2" />
-                  <h3 className="font-semibold text-gray-900">Monitoring</h3>
-                  <p className="text-sm text-gray-600">24/7 surveillance</p>
-                </CardContent>
-              </Card>
-            </div>
+            <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p>
+                Monitor, manage, and analyze your access control system with our intuitive admin panel. 
+                Real-time insights and comprehensive reporting at your fingertips.
+              </p>
+            </AnimatedText>
+            
+            <StaggeredText
+              staggerDelay={150}
+              animation="scale-fade"
+              className="grid grid-cols-2 gap-4 mb-8"
+            >
+              {features.map((feature, index) => (
+                <Card key={index} className={`p-4 border-0 ${feature.bgColor}`}>
+                  <CardContent className="p-0">
+                    {feature.icon}
+                    <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                    <p className="text-sm text-gray-600">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </StaggeredText>
 
-            <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3">
-              Explore Dashboard
-            </Button>
+            <AnimatedText animation="fade-up" delay={600}>
+              <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3">
+                Explore Dashboard
+              </Button>
+            </AnimatedText>
           </div>
 
-          <div className="relative">
+          <AnimatedText animation="fade-left" delay={400} className="relative">
             <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 shadow-2xl">
               <div className="bg-white rounded-xl p-6 mb-4">
                 <div className="flex items-center justify-between mb-4">
@@ -97,7 +113,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </AnimatedText>
         </div>
       </div>
     </section>

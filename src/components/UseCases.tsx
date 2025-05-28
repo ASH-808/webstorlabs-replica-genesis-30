@@ -1,6 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2, Calendar, Home, Briefcase } from "lucide-react";
+import { AnimatedText } from "@/components/animations/AnimatedText";
+import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const UseCases = () => {
   const useCases = [
@@ -30,13 +32,21 @@ export const UseCases = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Use Cases</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Versatile applications across industries and environments
-          </p>
+          <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
+            <h2>Use Cases</h2>
+          </AnimatedText>
+          <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p>
+              Versatile applications across industries and environments
+            </p>
+          </AnimatedText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <StaggeredText
+          staggerDelay={150}
+          animation="fade-up"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {useCases.map((useCase, index) => (
             <Card 
               key={index} 
@@ -57,7 +67,7 @@ export const UseCases = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </StaggeredText>
       </div>
     </section>
   );
