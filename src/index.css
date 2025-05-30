@@ -7,34 +7,24 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -86,7 +76,7 @@
   }
 }
 
-/* Initial States for Animations */
+/* Cinematic Animation Classes */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -98,16 +88,184 @@
   transform: translateY(0);
 }
 
+/* Glitch Effects */
+@keyframes glitch-low {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-medium {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2px, 2px); }
+  20% { transform: translate(-2px, -2px); }
+  30% { transform: translate(2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  70% { transform: translate(2px, 2px); }
+  80% { transform: translate(-2px, -2px); }
+  90% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-high {
+  0%, 100% { transform: translate(0, 0); }
+  5% { transform: translate(-3px, 3px); }
+  10% { transform: translate(-3px, -3px); }
+  15% { transform: translate(3px, 3px); }
+  20% { transform: translate(3px, -3px); }
+  25% { transform: translate(-3px, 3px); }
+  30% { transform: translate(-3px, -3px); }
+  35% { transform: translate(3px, 3px); }
+  40% { transform: translate(3px, -3px); }
+  45% { transform: translate(-3px, 3px); }
+  50% { transform: translate(-3px, -3px); }
+  55% { transform: translate(3px, 3px); }
+  60% { transform: translate(3px, -3px); }
+  65% { transform: translate(-3px, 3px); }
+  70% { transform: translate(-3px, -3px); }
+  75% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  85% { transform: translate(-3px, 3px); }
+  90% { transform: translate(-3px, -3px); }
+  95% { transform: translate(3px, 3px); }
+}
+
+/* Scan Line Effects */
+@keyframes scan-slow {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes scan-medium {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes scan-fast {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Cinematic Transitions */
+@keyframes fade-from-black {
+  0% { 
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 1);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  100% { 
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes slide-reveal {
+  0% { 
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spotlight-reveal {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+    filter: brightness(0);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes curtain-reveal {
+  0% { 
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% { 
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+.animate-glitch-low {
+  animation: glitch-low 0.2s ease-in-out;
+}
+
+.animate-glitch-medium {
+  animation: glitch-medium 0.3s ease-in-out;
+}
+
+.animate-glitch-high {
+  animation: glitch-high 0.4s ease-in-out;
+}
+
+.animate-scan-slow {
+  animation: scan-slow 4s linear infinite;
+}
+
+.animate-scan-medium {
+  animation: scan-medium 2s linear infinite;
+}
+
+.animate-scan-fast {
+  animation: scan-fast 1s linear infinite;
+}
+
+.animate-fade-from-black {
+  animation: fade-from-black 1.5s ease-out forwards;
+}
+
+.animate-slide-reveal {
+  animation: slide-reveal 1s ease-out forwards;
+}
+
+.animate-spotlight-reveal {
+  animation: spotlight-reveal 1.5s ease-out forwards;
+}
+
+.animate-curtain-reveal {
+  animation: curtain-reveal 1s ease-out forwards;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-in-up,
-  .animate-fade-in-down,
-  .animate-fade-in-left,
-  .animate-fade-in-right,
-  .animate-scale-fade-in,
-  .animate-slide-up-reveal,
-  .animate-text-reveal,
-  .animate-reveal-up {
+  .animate-glitch-low,
+  .animate-glitch-medium,
+  .animate-glitch-high,
+  .animate-scan-slow,
+  .animate-scan-medium,
+  .animate-scan-fast,
+  .animate-fade-from-black,
+  .animate-slide-reveal,
+  .animate-spotlight-reveal,
+  .animate-curtain-reveal {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -131,14 +289,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #111;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #333;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: #555;
 }
