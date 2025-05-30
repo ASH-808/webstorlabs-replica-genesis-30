@@ -6,6 +6,8 @@ interface ScrollAnimationOptions {
   rootMargin?: string;
   triggerOnce?: boolean;
   delay?: number;
+  stagger?: boolean;
+  staggerDelay?: number;
 }
 
 export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
@@ -13,11 +15,14 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
     threshold = 0.1,
     rootMargin = '0px 0px -100px 0px',
     triggerOnce = true,
-    delay = 0
+    delay = 0,
+    stagger = false,
+    staggerDelay = 100
   } = options;
 
   const [isInView, setIsInView] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const elementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -32,6 +37,17 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
           }, delay);
         } else if (!triggerOnce) {
           setIsInView(false);
+        }
+
+        // Calculate scroll progress
+        const rect = entry.boundingClientRect;
+        const windowHeight = window.innerHeight;
+        const elementHeight = rect.height;
+        const elementTop = rect.top;
+        
+        if (elementTop <= windowHeight && elementTop + elementHeight >= 0) {
+          const progress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
+          setScrollProgress(progress);
         }
       },
       {
@@ -51,5 +67,5 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
     };
   }, [threshold, rootMargin, triggerOnce, delay, hasTriggered]);
 
-  return { elementRef, isInView };
+  return { elementRef, isInView, scrollProgress };
 };

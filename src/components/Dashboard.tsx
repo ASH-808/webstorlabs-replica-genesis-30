@@ -1,121 +1,109 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { BarChart3, Users, Shield, Activity } from "lucide-react";
-import { AnimatedText } from "@/components/animations/AnimatedText";
-import { StaggeredText } from "@/components/animations/StaggeredText";
+import { StickyScrollSection } from "@/components/animations/StickyScrollSection";
+import { CinematicText } from "@/components/animations/CinematicText";
+import { BarChart3, Users, Shield, Activity, ArrowRight } from "lucide-react";
 
 export const Dashboard = () => {
-  const features = [
+  const dashboardFeatures = [
     {
-      icon: <BarChart3 className="h-8 w-8 text-blue-600 mb-2" />,
-      title: "Analytics",
-      description: "Real-time usage stats",
-      bgColor: "bg-blue-50"
+      title: "Real-time Analytics",
+      description: "Monitor access patterns, peak usage times, and security events in real-time. Our advanced analytics engine processes millions of data points to give you actionable insights.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <BarChart3 className="h-6 w-6 text-blue-500" />
+            <span className="text-lg font-semibold">Live Data Processing</span>
+          </div>
+          <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full">
+            View Analytics
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )
     },
     {
-      icon: <Users className="h-8 w-8 text-green-600 mb-2" />,
       title: "User Management",
-      description: "Access control",
-      bgColor: "bg-green-50"
+      description: "Effortlessly manage user permissions, create access groups, and handle visitor registrations. Streamlined workflows for administrators and security personnel.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Users className="h-6 w-6 text-green-500" />
+            <span className="text-lg font-semibold">Advanced Permissions</span>
+          </div>
+          <Button className="bg-green-500 hover:bg-green-600 text-white rounded-full">
+            Manage Users
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )
     },
     {
-      icon: <Shield className="h-8 w-8 text-purple-600 mb-2" />,
-      title: "Security",
-      description: "Advanced protection",
-      bgColor: "bg-purple-50"
+      title: "Security Monitoring",
+      description: "24/7 security monitoring with AI-powered threat detection. Instant alerts for suspicious activities and comprehensive audit trails for compliance.",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Shield className="h-6 w-6 text-purple-500" />
+            <span className="text-lg font-semibold">AI-Powered Security</span>
+          </div>
+          <Button className="bg-purple-500 hover:bg-purple-600 text-white rounded-full">
+            Security Center
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )
     },
     {
-      icon: <Activity className="h-8 w-8 text-orange-600 mb-2" />,
-      title: "Monitoring",
-      description: "24/7 surveillance",
-      bgColor: "bg-orange-50"
+      title: "System Health",
+      description: "Monitor device status, connectivity, and performance metrics. Predictive maintenance alerts ensure maximum uptime and reliability.",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Activity className="h-6 w-6 text-orange-500" />
+            <span className="text-lg font-semibold">Predictive Maintenance</span>
+          </div>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full">
+            System Status
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )
     }
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <AnimatedText animation="fade-right" className="text-4xl md:text-5xl font-bold text-black mb-8">
-              <h2>Intelligent Dashboard</h2>
-            </AnimatedText>
-            
-            <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 mb-8 leading-relaxed">
-              <p>
-                Monitor, manage, and analyze your access control system with our intuitive admin panel. 
-                Real-time insights and comprehensive reporting at your fingertips.
-              </p>
-            </AnimatedText>
-            
-            <StaggeredText
-              staggerDelay={150}
-              animation="scale-fade"
-              className="grid grid-cols-2 gap-4 mb-8"
-            >
-              {features.map((feature, index) => (
-                <Card key={index} className={`p-4 border-0 ${feature.bgColor}`}>
-                  <CardContent className="p-0">
-                    {feature.icon}
-                    <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                    <p className="text-sm text-gray-600">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </StaggeredText>
-
-            <AnimatedText animation="fade-up" delay={600}>
-              <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3">
-                Explore Dashboard
-              </Button>
-            </AnimatedText>
-          </div>
-
-          <AnimatedText animation="fade-left" delay={400} className="relative">
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 shadow-2xl">
-              <div className="bg-white rounded-xl p-6 mb-4">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold">Access Overview</h3>
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Entries</span>
-                    <span className="font-semibold">1,247</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Active Users</span>
-                    <span className="font-semibold">89</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">System Health</span>
-                    <span className="font-semibold text-green-600">99.9%</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6">
-                <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600">John Doe accessed Building A</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600">New user registered</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600">Security alert resolved</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AnimatedText>
+    <section className="bg-white">
+      <div className="py-32 text-center">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <CinematicText
+            variant="split"
+            size="xl"
+            className="text-black mb-8"
+            splitWords
+          >
+            Intelligent Control Center
+          </CinematicText>
+          
+          <CinematicText
+            variant="fade-up"
+            size="sm"
+            className="text-gray-600 font-light max-w-2xl mx-auto"
+            delay={400}
+          >
+            Experience the future of access control management with our revolutionary dashboard
+          </CinematicText>
         </div>
       </div>
+      
+      <StickyScrollSection
+        items={dashboardFeatures}
+        className="bg-gray-50"
+      />
     </section>
   );
 };
