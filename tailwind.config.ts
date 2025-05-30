@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -164,18 +163,6 @@ export default {
 						transform: 'translateY(0) skewY(0deg)'
 					}
 				},
-				'glow-pulse': {
-					'0%, 100%': {
-						textShadow: '0 0 20px rgba(0, 0, 0, 0.1)'
-					},
-					'50%': {
-						textShadow: '0 0 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(0, 0, 0, 0.1)'
-					}
-				},
-				'magnetic-hover': {
-					'0%': { transform: 'translate(0, 0) scale(1)' },
-					'100%': { transform: 'translate(var(--x, 0), var(--y, 0)) scale(1.05)' }
-				},
 				'reveal-up': {
 					'0%': {
 						opacity: '0',
@@ -187,6 +174,10 @@ export default {
 						transform: 'translateY(0) rotateX(0deg)',
 						filter: 'blur(0px)'
 					}
+				},
+				'magnetic-hover': {
+					'0%': { transform: 'translate(0, 0) scale(1)' },
+					'100%': { transform: 'translate(var(--x, 0), var(--y, 0)) scale(1.05)' }
 				}
 			},
 			animation: {
@@ -200,17 +191,8 @@ export default {
 				'scale-fade-in': 'scale-fade-in 0.8s ease-out',
 				'slide-up-reveal': 'slide-up-reveal 0.8s ease-out',
 				'text-reveal': 'text-reveal 1.2s ease-out',
-				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-				'magnetic-hover': 'magnetic-hover 0.3s ease-out',
 				'reveal-up': 'reveal-up 1s ease-out',
-				'delay-100': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 100ms forwards',
-				'delay-200': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 200ms forwards',
-				'delay-300': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 300ms forwards',
-				'delay-400': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 400ms forwards',
-				'delay-500': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 500ms forwards',
-				'delay-600': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 600ms forwards',
-				'delay-700': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 700ms forwards',
-				'delay-800': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 800ms forwards',
+				'magnetic-hover': 'magnetic-hover 0.3s ease-out'
 			}
 		}
 	},
