@@ -29,20 +29,22 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // More precise calculation for when container is in view
+      // Check if container is in view
       if (containerTop <= windowHeight && containerTop + containerHeight >= 0) {
-        // Calculate progress through the container
+        // Calculate scroll progress through the container
         const scrollProgress = Math.max(0, Math.min(1, 
           (windowHeight - containerTop) / (containerHeight + windowHeight)
         ));
         
-        // Determine active index based on scroll progress
+        // Calculate active index based on scroll progress
         const newActiveIndex = Math.min(
           Math.floor(scrollProgress * items.length),
           items.length - 1
         );
 
-        setActiveIndex(newActiveIndex);
+        if (newActiveIndex !== activeIndex) {
+          setActiveIndex(newActiveIndex);
+        }
       }
     };
 
@@ -63,7 +65,7 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
     handleScroll(); // Initial calculation
 
     return () => window.removeEventListener('scroll', throttledScroll);
-  }, [items.length]);
+  }, [items.length, activeIndex]);
 
   return (
     <div
@@ -71,6 +73,21 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
       className={cn('relative z-10', className)}
       style={{ height: `${items.length * 100}vh` }}
     >
+      {/* Progress indicator */}
+      <div className="fixed top-1/2 right-8 transform -translate-y-1/2 z-30 hidden md:block">
+        <div className="flex flex-col space-y-2">
+          {items.map((_, index) => (
+            <div
+              key={index}
+              className={cn(
+                "w-2 h-8 rounded-full transition-all duration-300",
+                activeIndex === index ? "bg-blue-600" : "bg-gray-300"
+              )}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="sticky top-0 h-screen flex">
         {/* Text Content */}
         <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 relative z-20">
@@ -95,9 +112,15 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
                   {item.description}
                 </p>
                 {item.content && (
-                  <div className="animate-fade-in-up" style={{ 
-                    animationDelay: activeIndex === index ? '200ms' : '0ms' 
-                  }}>
+                  <div 
+                    className={cn(
+                      "transition-all duration-500",
+                      activeIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    )}
+                    style={{ 
+                      transitionDelay: activeIndex === index ? '300ms' : '0ms'
+                    }}
+                  >
                     {item.content}
                   </div>
                 )}

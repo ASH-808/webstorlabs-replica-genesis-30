@@ -4,8 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { AnimatedText } from "@/components/animations/AnimatedText";
-import { StaggeredText } from "@/components/animations/StaggeredText";
 
 export const Contact = () => {
   const contactInfo = [
@@ -33,18 +31,16 @@ export const Contact = () => {
     <section id="contact" className="min-h-screen py-24 bg-white relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
-            <h2>Get in Touch</h2>
-          </AnimatedText>
-          <AnimatedText animation="fade-up" delay={200} className="text-xl text-gray-600 max-w-3xl mx-auto">
-            <p>
-              Ready to implement smart access control? Let's discuss your requirements
-            </p>
-          </AnimatedText>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 animate-fade-in-down">
+            Get in Touch
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            Ready to implement smart access control? Let's discuss your requirements
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <AnimatedText animation="fade-right" delay={400}>
+          <div className="animate-fade-in-right" style={{ animationDelay: '400ms' }}>
             <Card className="border border-gray-200 bg-white h-full shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-black">Send us a message</CardTitle>
@@ -65,20 +61,20 @@ export const Contact = () => {
                 </Button>
               </CardContent>
             </Card>
-          </AnimatedText>
+          </div>
 
           <div className="space-y-8">
-            <AnimatedText animation="fade-left" delay={600}>
-              <h3 className="text-2xl font-bold text-black mb-6">Contact Information</h3>
-            </AnimatedText>
+            <h3 className="text-2xl font-bold text-black mb-6 animate-fade-in-left" style={{ animationDelay: '600ms' }}>
+              Contact Information
+            </h3>
             
-            <StaggeredText
-              staggerDelay={150}
-              animation="fade-up"
-              className="space-y-6"
-            >
+            <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-start gap-4">
+                <div 
+                  key={index} 
+                  className="flex items-start gap-4 animate-fade-in-up"
+                  style={{ animationDelay: `${600 + (index * 150)}ms` }}
+                >
                   <div className={`p-3 ${info.bgColor} rounded-full flex-shrink-0`}>
                     {info.icon}
                   </div>
@@ -88,9 +84,9 @@ export const Contact = () => {
                   </div>
                 </div>
               ))}
-            </StaggeredText>
+            </div>
 
-            <AnimatedText animation="scale-fade" delay={1000}>
+            <div className="animate-scale-fade-in" style={{ animationDelay: '1000ms' }}>
               <Card className="border border-blue-200 bg-blue-50 shadow-lg">
                 <CardContent className="p-6">
                   <h4 className="font-bold text-black mb-3 text-lg">Newsletter Signup</h4>
@@ -109,7 +105,7 @@ export const Contact = () => {
                   </div>
                 </CardContent>
               </Card>
-            </AnimatedText>
+            </div>
           </div>
         </div>
       </div>
