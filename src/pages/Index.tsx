@@ -15,14 +15,16 @@ const Index = () => {
     <div className="min-h-screen bg-black font-manrope overflow-x-hidden">
       <Navbar />
       <CinematicHero />
-      <TechShowcase />
-      <MysteriousReveal />
-      <Dashboard />
-      <UseCases />
-      <HowItWorks />
-      <LaunchingSoon />
-      <Contact />
-      <Footer />
+      <div className="relative z-10">
+        <TechShowcase />
+        <MysteriousReveal />
+        <Dashboard />
+        <UseCases />
+        <HowItWorks />
+        <LaunchingSoon />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 };

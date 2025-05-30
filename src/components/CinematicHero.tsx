@@ -100,11 +100,11 @@ export const CinematicHero = () => {
 
           <CinematicTransition transitionType="curtain" duration={2000}>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button className="bg-white text-black hover:bg-gray-200 rounded-none px-12 py-4 text-xl font-bold transition-all duration-500 hover:scale-105 tracking-wider">
+              <Button className="bg-white text-black hover:bg-gray-200 rounded-full px-12 py-4 text-xl font-bold transition-all duration-500 hover:scale-105 tracking-wider">
                 EXPERIENCE
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black rounded-none px-12 py-4 text-xl font-bold transition-all duration-500 tracking-wider">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black rounded-full px-12 py-4 text-xl font-bold transition-all duration-500 tracking-wider">
                 <Play className="mr-3 h-6 w-6" />
                 PREVIEW
               </Button>
