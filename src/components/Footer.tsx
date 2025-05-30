@@ -1,4 +1,5 @@
 
+
 export const Footer = () => {
   return (
     <footer className="bg-black text-white py-16">
@@ -48,10 +49,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      
-      <div className="text-center mt-8 text-gray-500 text-sm">
-        Made in Framer
-      </div>
     </footer>
   );
 };
+
