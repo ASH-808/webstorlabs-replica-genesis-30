@@ -81,8 +81,6 @@ export const CinematicText: React.FC<CinematicTextProps> = ({
         'font-black leading-none',
         getSizeClass(),
         getVariantClass(),
-        variant === 'reveal' && 'before:content-[""] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-10',
-        variant === 'reveal' && isInView && 'before:animate-slide-out-right',
         variant === 'fade-up' && !isInView && 'opacity-0 translate-y-8',
         variant === 'fade-up' && isInView && 'opacity-100 translate-y-0',
         variant === 'scale-in' && !isInView && 'opacity-0 scale-95',
