@@ -24,25 +24,45 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
     const handleScroll = () => {
       if (!containerRef.current) return;
 
-      const containerTop = containerRef.current.offsetTop;
-      const containerHeight = containerRef.current.offsetHeight;
-      const scrollY = window.scrollY;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerTop = containerRect.top;
+      const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate which item should be active based on scroll position
-      const scrollProgress = (scrollY - containerTop + windowHeight / 2) / containerHeight;
-      const newActiveIndex = Math.min(
-        Math.max(0, Math.floor(scrollProgress * items.length)),
-        items.length - 1
-      );
+      // More precise calculation for when container is in view
+      if (containerTop <= windowHeight && containerTop + containerHeight >= 0) {
+        // Calculate progress through the container
+        const scrollProgress = Math.max(0, Math.min(1, 
+          (windowHeight - containerTop) / (containerHeight + windowHeight)
+        ));
+        
+        // Determine active index based on scroll progress
+        const newActiveIndex = Math.min(
+          Math.floor(scrollProgress * items.length),
+          items.length - 1
+        );
 
-      setActiveIndex(newActiveIndex);
+        setActiveIndex(newActiveIndex);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const throttledScroll = (() => {
+      let ticking = false;
+      return () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+    })();
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
     handleScroll(); // Initial calculation
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, [items.length]);
 
   return (
@@ -53,49 +73,58 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
     >
       <div className="sticky top-0 h-screen flex">
         {/* Text Content */}
-        <div className="w-1/2 flex items-center justify-center p-12">
-          <div className="max-w-lg">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12">
+          <div className="max-w-lg w-full relative">
             {items.map((item, index) => (
               <div
                 key={index}
                 ref={(el) => (itemRefs.current[index] = el)}
                 className={cn(
-                  'absolute inset-0 flex flex-col justify-center transition-all duration-1000',
+                  'absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-out',
                   activeIndex === index
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8'
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : activeIndex > index 
+                    ? 'opacity-0 -translate-y-4 scale-95'
+                    : 'opacity-0 translate-y-4 scale-95'
                 )}
               >
-                <h3 className="text-4xl md:text-5xl font-black mb-6 text-black">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 text-black leading-tight">
                   {item.title}
                 </h3>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-6 md:mb-8">
                   {item.description}
                 </p>
-                {item.content}
+                {item.content && (
+                  <div className="animate-fade-in-up" style={{ 
+                    animationDelay: activeIndex === index ? '200ms' : '0ms' 
+                  }}>
+                    {item.content}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
 
         {/* Image Content */}
-        <div className="w-1/2 relative overflow-hidden">
+        <div className="hidden md:block md:w-1/2 relative overflow-hidden">
           {items.map((item, index) => (
             <div
               key={index}
               className={cn(
-                'absolute inset-0 transition-all duration-1000',
+                'absolute inset-0 transition-all duration-700 ease-out',
                 activeIndex === index
                   ? 'opacity-100 scale-100'
-                  : 'opacity-0 scale-110'
+                  : 'opacity-0 scale-105'
               )}
             >
               <img
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-l from-black/20 to-transparent" />
             </div>
           ))}
         </div>
