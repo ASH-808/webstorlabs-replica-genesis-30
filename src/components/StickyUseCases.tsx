@@ -100,17 +100,18 @@ export const StickyUseCases = () => {
   ];
 
   return (
-    <section className="bg-white relative">
-      <div className="text-center py-20">
+    <section className="bg-white relative overflow-hidden">
+      <div className="text-center py-20 relative z-20">
         <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
           Endless Possibilities
         </h2>
-        <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto px-4">
           From corporate offices to smart cities, our solutions adapt to every environment
         </p>
       </div>
       
-      <div className="relative">
+      {/* Add scroll snap container */}
+      <div className="snap-y snap-mandatory">
         <StickyScrollSection 
           items={useCases}
           className="min-h-screen"
