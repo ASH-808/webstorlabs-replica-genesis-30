@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface AnimatedTextProps {
   children: React.ReactNode;
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-fade' | 'slide-up' | 'text-reveal';
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-fade' | 'slide-up' | 'text-reveal' | 'reveal-up';
   delay?: number;
   className?: string;
   triggerOnce?: boolean;
@@ -42,6 +42,8 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
         return 'animate-slide-up-reveal';
       case 'text-reveal':
         return 'animate-text-reveal';
+      case 'reveal-up':
+        return 'animate-reveal-up';
       default:
         return 'animate-fade-in-up';
     }
@@ -51,8 +53,8 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     <div
       ref={elementRef}
       className={cn(
-        'animate-on-scroll',
-        isInView && 'in-view',
+        'animate-on-scroll opacity-0',
+        isInView && 'opacity-100',
         isInView && getAnimationClass(),
         className
       )}

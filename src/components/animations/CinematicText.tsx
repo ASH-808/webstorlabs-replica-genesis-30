@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface CinematicTextProps {
   children: React.ReactNode;
-  variant?: 'reveal' | 'split' | 'fade-up' | 'scale-in' | 'typewriter';
+  variant?: 'reveal' | 'split' | 'fade-up' | 'scale-in' | 'typewriter' | 'reveal-up';
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'hero';
   delay?: number;
   className?: string;
@@ -49,6 +49,8 @@ export const CinematicText: React.FC<CinematicTextProps> = ({
         return 'transform transition-all duration-1000';
       case 'typewriter':
         return 'overflow-hidden border-r-2 border-black';
+      case 'reveal-up':
+        return 'transform transition-all duration-1000';
       default:
         return '';
     }
@@ -60,10 +62,10 @@ export const CinematicText: React.FC<CinematicTextProps> = ({
         <span
           key={index}
           className={cn(
-            'inline-block mr-2',
-            isInView && 'animate-fade-in-up',
-            `animate-delay-${Math.min(8, index + 1) * 100}`
+            'inline-block mr-2 opacity-0',
+            isInView && 'animate-fade-in-up opacity-100'
           )}
+          style={{ animationDelay: isInView ? `${index * 100}ms` : '0ms' }}
         >
           {word}
         </span>
@@ -85,6 +87,8 @@ export const CinematicText: React.FC<CinematicTextProps> = ({
         variant === 'fade-up' && isInView && 'opacity-100 translate-y-0',
         variant === 'scale-in' && !isInView && 'opacity-0 scale-95',
         variant === 'scale-in' && isInView && 'opacity-100 scale-100',
+        variant === 'reveal-up' && !isInView && 'opacity-0 translate-y-16',
+        variant === 'reveal-up' && isInView && 'opacity-100 translate-y-0 animate-reveal-up',
         className
       )}
       style={{ animationDelay: `${delay}ms` }}

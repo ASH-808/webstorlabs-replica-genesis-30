@@ -19,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Manrope', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+				'manrope': ['Manrope', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -93,7 +97,7 @@ export default {
 				'fade-in-up': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(20px)'
+						transform: 'translateY(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -103,7 +107,7 @@ export default {
 				'fade-in-down': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(-20px)'
+						transform: 'translateY(-30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -113,7 +117,7 @@ export default {
 				'fade-in-left': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateX(-20px)'
+						transform: 'translateX(-30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -123,7 +127,7 @@ export default {
 				'fade-in-right': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateX(20px)'
+						transform: 'translateX(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -143,7 +147,7 @@ export default {
 				'slide-up-reveal': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(30px)'
+						transform: 'translateY(40px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -167,6 +171,22 @@ export default {
 					'50%': {
 						textShadow: '0 0 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(0, 0, 0, 0.1)'
 					}
+				},
+				'magnetic-hover': {
+					'0%': { transform: 'translate(0, 0) scale(1)' },
+					'100%': { transform: 'translate(var(--x, 0), var(--y, 0)) scale(1.05)' }
+				},
+				'reveal-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(60px) rotateX(15deg)',
+						filter: 'blur(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0) rotateX(0deg)',
+						filter: 'blur(0px)'
+					}
 				}
 			},
 			animation: {
@@ -181,14 +201,16 @@ export default {
 				'slide-up-reveal': 'slide-up-reveal 0.8s ease-out',
 				'text-reveal': 'text-reveal 1.2s ease-out',
 				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-				'delay-100': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 100ms',
-				'delay-200': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 200ms',
-				'delay-300': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 300ms',
-				'delay-400': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 400ms',
-				'delay-500': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 500ms',
-				'delay-600': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 600ms',
-				'delay-700': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 700ms',
-				'delay-800': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 800ms',
+				'magnetic-hover': 'magnetic-hover 0.3s ease-out',
+				'reveal-up': 'reveal-up 1s ease-out',
+				'delay-100': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 100ms forwards',
+				'delay-200': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 200ms forwards',
+				'delay-300': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 300ms forwards',
+				'delay-400': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 400ms forwards',
+				'delay-500': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 500ms forwards',
+				'delay-600': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 600ms forwards',
+				'delay-700': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 700ms forwards',
+				'delay-800': 'var(--animation-name) var(--animation-duration, 0.8s) ease-out 800ms forwards',
 			}
 		}
 	},

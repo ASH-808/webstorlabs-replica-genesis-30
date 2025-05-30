@@ -13,7 +13,7 @@ export const Hero = () => {
   const imageParallax4 = useParallax({ sensitivity: 0.035, maxOffset: 22 });
 
   return (
-    <section id="home" className="min-h-screen bg-white pt-16 relative overflow-hidden">
+    <section id="home" className="min-h-screen bg-white pt-16 relative overflow-hidden font-manrope">
       {/* Background Images with Parallax */}
       <div 
         className="absolute top-20 left-8 w-64 h-48 opacity-60 will-change-transform"
@@ -79,14 +79,14 @@ export const Hero = () => {
             delay={200}
             className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none mb-8"
           >
-            <h1 className="animate-glow-pulse">WEBSTORLABS</h1>
+            <h1 className="animate-glow-pulse font-manrope">WEBSTORLABS</h1>
           </AnimatedText>
           
           <div className="max-w-3xl mx-auto mb-12">
             <AnimatedText 
               animation="fade-up" 
               delay={600}
-              className="text-lg md:text-xl text-gray-700 leading-relaxed"
+              className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium"
             >
               <p>
                 "From smart entry systems to custom software, WebstorLabs delivers the complete infrastructure for intelligent access control."
@@ -99,11 +99,11 @@ export const Hero = () => {
             animation="scale-fade"
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105">
+            <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 font-manrope">
               Know More
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" className="rounded-full px-8 py-3 text-lg font-medium hover:bg-gray-50 transition-all duration-300">
+            <Button variant="outline" className="rounded-full px-8 py-3 text-lg font-semibold hover:bg-gray-50 transition-all duration-300 font-manrope">
               <Play className="mr-2 h-5 w-5" />
               Watch Demo
             </Button>

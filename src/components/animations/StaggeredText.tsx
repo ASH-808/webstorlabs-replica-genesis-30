@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface StaggeredTextProps {
   children: React.ReactNode[];
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-fade';
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-fade' | 'reveal-up';
   staggerDelay?: number;
   className?: string;
   itemClassName?: string;
@@ -35,22 +35,18 @@ export const StaggeredText: React.FC<StaggeredTextProps> = ({
         return 'animate-fade-in-right';
       case 'scale-fade':
         return 'animate-scale-fade-in';
+      case 'reveal-up':
+        return 'animate-reveal-up';
       default:
         return 'animate-fade-in-up';
     }
   };
 
-  const getDelayClass = (index: number) => {
+  const getDelayStyle = (index: number) => {
     const delay = index * staggerDelay;
-    if (delay <= 100) return 'animate-delay-100';
-    if (delay <= 200) return 'animate-delay-200';
-    if (delay <= 300) return 'animate-delay-300';
-    if (delay <= 400) return 'animate-delay-400';
-    if (delay <= 500) return 'animate-delay-500';
-    if (delay <= 600) return 'animate-delay-600';
-    if (delay <= 700) return 'animate-delay-700';
-    if (delay <= 800) return 'animate-delay-800';
-    return '';
+    return {
+      animationDelay: isInView ? `${delay}ms` : '0ms'
+    };
   };
 
   return (
@@ -59,12 +55,12 @@ export const StaggeredText: React.FC<StaggeredTextProps> = ({
         <div
           key={index}
           className={cn(
-            'animate-on-scroll',
-            isInView && 'in-view',
+            'animate-on-scroll opacity-0',
+            isInView && 'opacity-100',
             isInView && getAnimationClass(),
-            isInView && getDelayClass(index),
             itemClassName
           )}
+          style={getDelayStyle(index)}
         >
           {child}
         </div>

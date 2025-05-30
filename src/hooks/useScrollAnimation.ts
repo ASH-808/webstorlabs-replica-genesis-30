@@ -23,7 +23,7 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const [isInView, setIsInView] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
