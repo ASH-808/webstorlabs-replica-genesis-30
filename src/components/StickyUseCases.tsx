@@ -100,7 +100,7 @@ export const StickyUseCases = () => {
   ];
 
   return (
-    <section className="bg-white">
+    <section className="bg-white relative">
       <div className="text-center py-20">
         <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
           Endless Possibilities
@@ -110,10 +110,12 @@ export const StickyUseCases = () => {
         </p>
       </div>
       
-      <StickyScrollSection 
-        items={useCases}
-        className="min-h-screen"
-      />
+      <div className="relative">
+        <StickyScrollSection 
+          items={useCases}
+          className="min-h-screen"
+        />
+      </div>
     </section>
   );
 };

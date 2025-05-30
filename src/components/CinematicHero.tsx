@@ -14,7 +14,7 @@ export const CinematicHero = () => {
   const imageParallax4 = useParallax({ sensitivity: 0.035, maxOffset: 22 });
 
   return (
-    <section id="home" className="min-h-screen bg-black pt-16 relative overflow-hidden">
+    <section id="home" className="min-h-screen bg-black pt-16 relative">
       <ScanLines opacity={0.05} speed="slow" />
       
       {/* Background Images with Parallax - Now with tech feel */}

@@ -68,12 +68,12 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cn('relative', className)}
+      className={cn('relative z-10', className)}
       style={{ height: `${items.length * 100}vh` }}
     >
       <div className="sticky top-0 h-screen flex">
         {/* Text Content */}
-        <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 relative z-20">
           <div className="max-w-lg w-full relative">
             {items.map((item, index) => (
               <div
@@ -107,7 +107,7 @@ export const StickyScrollSection: React.FC<StickyScrollSectionProps> = ({
         </div>
 
         {/* Image Content */}
-        <div className="hidden md:block md:w-1/2 relative overflow-hidden">
+        <div className="hidden md:block md:w-1/2 relative z-10">
           {items.map((item, index) => (
             <div
               key={index}

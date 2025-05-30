@@ -30,7 +30,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white relative">
+    <section id="contact" className="min-h-screen py-24 bg-white relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
@@ -45,7 +45,7 @@ export const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <AnimatedText animation="fade-right" delay={400}>
-            <Card className="border-0 bg-gray-50 h-full">
+            <Card className="border border-gray-200 bg-white h-full shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-black">Send us a message</CardTitle>
               </CardHeader>
@@ -91,7 +91,7 @@ export const Contact = () => {
             </StaggeredText>
 
             <AnimatedText animation="scale-fade" delay={1000}>
-              <Card className="border border-blue-200 bg-blue-50">
+              <Card className="border border-blue-200 bg-blue-50 shadow-lg">
                 <CardContent className="p-6">
                   <h4 className="font-bold text-black mb-3 text-lg">Newsletter Signup</h4>
                   <p className="text-gray-600 mb-4 text-sm">
