@@ -30,7 +30,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="contact" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <AnimatedText animation="fade-down" className="text-4xl md:text-5xl font-bold text-black mb-6">
@@ -47,20 +47,20 @@ export const Contact = () => {
           <AnimatedText animation="fade-right" delay={400}>
             <Card className="border-0 bg-gray-50 h-full">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold">Send us a message</CardTitle>
+                <CardTitle className="text-2xl font-bold text-black">Send us a message</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input placeholder="First Name" className="border-gray-200" />
-                  <Input placeholder="Last Name" className="border-gray-200" />
+                  <Input placeholder="First Name" className="border-gray-300 bg-white" />
+                  <Input placeholder="Last Name" className="border-gray-300 bg-white" />
                 </div>
-                <Input placeholder="Email Address" type="email" className="border-gray-200" />
-                <Input placeholder="Company" className="border-gray-200" />
+                <Input placeholder="Email Address" type="email" className="border-gray-300 bg-white" />
+                <Input placeholder="Company" className="border-gray-300 bg-white" />
                 <Textarea 
                   placeholder="Tell us about your project requirements..." 
-                  className="border-gray-200 min-h-32"
+                  className="border-gray-300 bg-white min-h-32"
                 />
-                <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-full py-3">
+                <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-full py-3 font-semibold">
                   Send Message
                 </Button>
               </CardContent>
@@ -79,11 +79,11 @@ export const Contact = () => {
             >
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className={`p-3 ${info.bgColor} rounded-full`}>
+                  <div className={`p-3 ${info.bgColor} rounded-full flex-shrink-0`}>
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black">{info.title}</h4>
+                    <h4 className="font-semibold text-black text-lg">{info.title}</h4>
                     <p className="text-gray-600 whitespace-pre-line">{info.content}</p>
                   </div>
                 </div>
@@ -91,15 +91,19 @@ export const Contact = () => {
             </StaggeredText>
 
             <AnimatedText animation="scale-fade" delay={1000}>
-              <Card className="border-0 bg-blue-50">
+              <Card className="border border-blue-200 bg-blue-50">
                 <CardContent className="p-6">
-                  <h4 className="font-bold text-black mb-3">Newsletter Signup</h4>
-                  <p className="text-gray-600 mb-4">
+                  <h4 className="font-bold text-black mb-3 text-lg">Newsletter Signup</h4>
+                  <p className="text-gray-600 mb-4 text-sm">
                     Stay updated with the latest NFC technology trends and product updates.
                   </p>
-                  <div className="flex gap-2">
-                    <Input placeholder="Your email" className="flex-1 border-gray-200" />
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white px-6">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Input 
+                      placeholder="Your email address" 
+                      className="flex-1 border-blue-300 bg-white focus:border-blue-500 focus:ring-blue-500" 
+                      type="email"
+                    />
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold whitespace-nowrap">
                       Subscribe
                     </Button>
                   </div>

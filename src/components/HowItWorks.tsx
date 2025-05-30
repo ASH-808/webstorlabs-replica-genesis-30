@@ -39,8 +39,8 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section ref={elementRef} className="py-32 bg-black text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section ref={elementRef} className="py-32 bg-black text-white overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <CinematicText
             variant="reveal"
@@ -86,7 +86,7 @@ export const HowItWorks = () => {
             >
               <div className="flex-1">
                 <Card className={`bg-gradient-to-br ${step.color} border-0 overflow-hidden group hover:scale-105 transition-transform duration-500`}>
-                  <CardContent className="p-12 text-center">
+                  <CardContent className="p-12 text-center relative z-10">
                     <div className="text-6xl font-black text-white/20 mb-4">{step.step}</div>
                     <h3 className="text-3xl font-black text-white mb-6">{step.title}</h3>
                     <p className="text-white/90 text-lg leading-relaxed">{step.description}</p>

@@ -3,7 +3,7 @@ import { CinematicHero } from "@/components/CinematicHero";
 import { TechShowcase } from "@/components/TechShowcase";
 import { Dashboard } from "@/components/Dashboard";
 import { MysteriousReveal } from "@/components/MysteriousReveal";
-import { UseCases } from "@/components/UseCases";
+import { StickyUseCases } from "@/components/StickyUseCases";
 import { HowItWorks } from "@/components/HowItWorks";
 import { LaunchingSoon } from "@/components/LaunchingSoon";
 import { Contact } from "@/components/Contact";
@@ -19,7 +19,7 @@ const Index = () => {
         <TechShowcase />
         <MysteriousReveal />
         <Dashboard />
-        <UseCases />
+        <StickyUseCases />
         <HowItWorks />
         <LaunchingSoon />
         <Contact />
